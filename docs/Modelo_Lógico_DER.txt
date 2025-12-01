@@ -1,0 +1,30 @@
+[Especialidade]
+[PK especialidade_id]
+nome
+descricao
+     |
+     |1
+     |
+     N
+[Medico]
+[PK medico_id]
+crm
+nome
+(FK especialidade_id)
+
+[Paciente] 1 ----- N [Consulta] 1 ---- N [Exame]
+[PK paciente_id]     [PK consulta_id]     [PK exame_id]
+cpf                  (FK paciente_id)     (FK consulta_id)
+nome                 (FK medico_id)
+                     (FK recepcionista_id)
+
+                     1
+                     |
+                     0..1
+                     v
+                 [Prontuario]
+                 [PK prontuario_id]
+                 (FK consulta_id UNIQUE)
+                 diagnostico
+                 prescricao
+                 evolucao
